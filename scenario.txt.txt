@@ -1,0 +1,40 @@
+./ADB
+Android Debug Bridge version 1.0.41
+Version 34.0.5-10900879
+Installed as F:\QA_Vadim_K\ADB_Android\platform-tools\ADB.exe
+Running on Windows 10.0.19045
+
+1. Отобразить подключенный девайс в консоли
+
+./ADB devices
+List of devices attached
+RF8RB13D9FR     device
+
+2. Вывести адрес приложения todolist в системе Android
+
+./adb shell pm list packages -f todolist
+package:/data/app/~~UCubtniJkdaFs1_DTMUBrA==/com.android.todolist-ubMW11smc3NRl7nJtrOvBQ==/base.apk=com.android.todolist
+
+3. Установить .apk файл приложения todolist на телефон с компьютера через  ADB
+
+./adb install /f/QA_Vadim_K/ADB_Android/TodoList.apk
+Performing Streamed Install
+Success
+
+4. Сделать скриншот запущенного приложения todolist и сразу скопировать на компьютер в одной команде.
+
+./adb shell screencap -p | sed 's/^M$//' > /f/QA_Vadim_K/ADB_Android/screen_todo.png
+
+5. Вывести в консоль логи приложения todolist
+
+./adb logcat | grep com.android.todolist
+
+6. Скопировать логи приложения todolist на компьютер
+
+./adb logcat | grep com.android.todolist > /f/QA_Vadim_K/ADB_Android/logs2dlist.log
+
+7. Удалить приложение todolist с телефона через ADB
+
+./adb uninstall com.android.todolist
+Success
+
